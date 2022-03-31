@@ -33,4 +33,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Distributive
-          path: test8/build/installed/
+          path: task8/build/installed/
