@@ -24,4 +24,6 @@ jobs:
       - name: Test
         uses: akhtyamovpavel/ActionGtestReport@v0.0.9
         with:
-          who-to-greet: 'Mona the Octocat'
+          working-directory: task8/build
+          exec-path: ../bin/CTestExe
+          report-path: test-report
