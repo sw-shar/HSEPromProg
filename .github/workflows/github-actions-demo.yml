@@ -18,8 +18,9 @@ jobs:
           cd ..  # task8
           mkdir build
           cd build
-          GOOGLE_TEST_DIR=googletest-release-1.11.0 cmake ..
+          GOOGLE_TEST_DIR=googletest-release-1.11.0 cmake -DCMAKE_INSTALL_PREFIX=installed ..
           make
+          make install
 
       - name: Test
         uses: akhtyamovpavel/ActionGtestReport@v0.0.9
@@ -27,3 +28,9 @@ jobs:
           working-directory: task8/build
           exec-path: ../bin/CTestExe
           report-path: test-report
+
+      - name: UploadArtifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Distributive
+          path: test8/build/installed
