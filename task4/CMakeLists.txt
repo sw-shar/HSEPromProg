@@ -21,6 +21,15 @@ FetchContent_Declare(
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
 
+add_custom_command( 
+  OUTPUT ${PROJECT_SOURCE_DIR}/A/index.h
+  COMMAND python3 ${PROJECT_SOURCE_DIR}/A/preparing.py ${PROJECT_SOURCE_DIR}/A/index.h
+  DEPENDS ${PROJECT_SOURCE_DIR}/A/preparing.py
+  COMMENT "Generating index.h"
+)
+
+add_custom_target(RunGenerator DEPENDS ${PROJECT_SOURCE_DIR}/A/index.h COMMENT "Checking if re-generation is required")
+
 add_subdirectory(B)
 add_subdirectory(C)
 
