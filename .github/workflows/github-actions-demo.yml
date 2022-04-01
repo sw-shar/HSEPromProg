@@ -27,7 +27,7 @@ jobs:
         with:
           working-directory: task8/build
           exec-path: ../bin/CTestExe
-          report-path: test-report
+          report-path: report.xml
 
       - name: UploadArtifacts
         uses: actions/upload-artifact@v3
