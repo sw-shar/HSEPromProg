@@ -13,6 +13,8 @@ project(Task4)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${Task4_SOURCE_DIR}/bin)
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${Task4_SOURCE_DIR}/lib)
 
+find_package(GTest CONFIG REQUIRED)
+enable_testing()
 
 add_subdirectory(B)
 add_subdirectory(C)
