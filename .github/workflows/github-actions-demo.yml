@@ -1,0 +1,36 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  Explore-GitHub-Actions:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      # Runs a set of commands using the runners shell
+      - name: Build
+        run: |
+          cd task8
+          mkdir 3rdparty
+          cd 3rdparty
+          wget https://github.com/google/googletest/archive/refs/tags/release-1.11.0.tar.gz
+          tar -xzf release-1.11.0.tar.gz
+          cd ..  # task8
+          mkdir build
+          cd build
+          GOOGLE_TEST_DIR=googletest-release-1.11.0 cmake -DCMAKE_INSTALL_PREFIX=installed ..
+          make
+          make install
+
+      - name: Test
+        uses: akhtyamovpavel/ActionGtestReport@v0.0.9
+        with:
+          working-directory: task8/build
+          exec-path: ../bin/CTestExe
+          report-path: report.xml
+
+      - name: UploadArtifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Distributive
+          path: task8/build/installed/exe/
