@@ -1,10 +1,10 @@
 project(C)
 
 
-add_executable(CTestExe main_test.cpp tests.cpp)
+add_executable(CTest main_test.cpp tests.cpp)
 
-target_link_libraries(CTestExe gtest_main ClassLib)
-target_include_directories(CTestExe PRIVATE ${Task4_SOURCE_DIR})
+target_link_libraries(CTest gtest_main ClassLib)
+target_include_directories(CTest PRIVATE ${Task4_SOURCE_DIR})
 
 
 add_executable(C main.cpp)
